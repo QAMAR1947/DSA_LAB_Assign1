@@ -19,7 +19,7 @@ void print(struct NODE* &head){
 	NODE* current = head;
 
 	while (current != NULL){
-		cout<<current->coff;
+		cout<<current->coff<<" x";
 		cout<<current->exp<<", ";
 		current = current->next;
 	}
@@ -51,6 +51,20 @@ void insert(struct NODE* &head, int coffecient, int exponent){
 	
 }
 
+// FUNCTION TO MULTIPLY A NUMBER WITH POLYNOMIAL
+void mult(struct NODE* head, int num){
+	NODE* temp = head;
+	int number = num;
+	
+	while(temp != NULL){
+		temp->coff = number * temp->coff;
+		cout<<temp->coff<<" x";
+		cout<<temp->exp<<", ";
+		temp = temp->next;
+	}
+	
+}
+
 // MAIN FUNCTION
 int main(){
 	NODE* head = NULL;
@@ -60,7 +74,12 @@ int main(){
 	insert(head,3,2);
 	insert(head,2,1);
 	
+	cout<<"PRINTING POLYNOMIAL BEFORE MULTIPLYING WITH NUMBER"<<endl;
 	print(head);
+	
+	cout<<"PRINTING POLYNOMIAL AFTER MULTIPLYING WITH NUMBER"<<endl;
+	mult(head, 3);
+	
 	
 	return 0;
 }
